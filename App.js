@@ -23,6 +23,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"))
 // root.render(heading)
 root.render(parent)
 
+// for function use
 
 // const root = ReactDOM.createRoot(document.getElementById("root"));
 
