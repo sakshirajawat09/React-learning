@@ -1,0 +1,30 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "learing react",
+  "devDependencies": {
+    "parcel": "^2.16.3"
+  },
+  "scripts": {
+    "start": "parcel index2.html",
+    "build": "parcel build index2.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sakshirajawat09/React-learning.git"
+  },
+  "author": "Sakshi Rajawat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sakshirajawat09/React-learning/issues"
+  },
+  "homepage": "https://github.com/sakshirajawat09/React-learning#readme",
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "browserslist" : [
+     "last 2 versions"
+  ]
+}
