@@ -36,9 +36,13 @@ const heading2 = <h1 className="heading" tabIndex="5">hello  from jsx </h1>
 
 // root.render(heading2)
 
+// normal component
+const Title = (
+  <h2>hii i am just a title</h2>
+)
 
 const HeadingComponent = () => {
-  return <h1 className="heading">hiiii, i am just functional compon</h1>
+  return <h1 className="heading">hiiii, i am just functional component</h1>
 }
 
 const HeadingComponent3 = () => <h1 className="heading">hiiii from HeadingComponent3</h1>
@@ -46,6 +50,7 @@ const HeadingComponent3 = () => <h1 className="heading">hiiii from HeadingCompon
 
 const HeadingComponent2 = () =>(
   <div id="containers" >
+  {Title} //normal variable
   <HeadingComponent />
   {HeadingComponent3()}
   <h1 className="heading">hiiii</h1>
