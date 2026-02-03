@@ -1,6 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 
+const root = ReactDOM.createRoot(document.getElementById("root"))
 
 const parent = React.createElement("div", {id:"parent"},  
   [
@@ -17,22 +18,41 @@ const parent = React.createElement("div", {id:"parent"},
   ]
 )
 
+console.log(parent) //object
+
+// root.render(parent)
+
 const heading = React.createElement(
   "h1", 
   {id: "heading"},  //attribute
-   "hello from react")
+   "hello from react") //childrens
 
-   console.log(parent) //object
-const root = ReactDOM.createRoot(document.getElementById("root"))
 // root.render(heading)
-root.render(parent)
 
-// for function use
+//  //React using jsx
 
-// const root = ReactDOM.createRoot(document.getElementById("root"));
+const heading2 = <h1 className="heading" tabIndex="5">hello  from jsx </h1> 
 
-// function App() {
-//   return <h1>Hello Sakshi 👩‍💻</h1>;
-// }
 
-// root.render(<App />);
+// root.render(heading2)
+
+
+const HeadingComponent = () => {
+  return <h1 className="heading">hiiii, i am just functional compon</h1>
+}
+
+const HeadingComponent3 = () => <h1 className="heading">hiiii from HeadingComponent3</h1>
+
+
+const HeadingComponent2 = () =>(
+  <div id="containers" >
+  <HeadingComponent />
+  {HeadingComponent3()}
+  <h1 className="heading">hiiii</h1>
+  </div>
+);
+
+
+
+
+root.render(<HeadingComponent2/>)
