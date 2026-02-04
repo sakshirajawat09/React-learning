@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "learing react",
   "devDependencies": {
-    "parcel": "^2.16.3"
+    "parcel": "^2.16.4"
   },
   "scripts": {
     "start": "parcel index2.html",
@@ -22,9 +22,10 @@
   "homepage": "https://github.com/sakshirajawat09/React-learning#readme",
   "dependencies": {
     "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.4",
+    "reactdom": "^2.0.0"
   },
-  "browserslist" : [
-     "last 2 versions"
+  "browserslist": [
+    "last 2 versions"
   ]
 }
