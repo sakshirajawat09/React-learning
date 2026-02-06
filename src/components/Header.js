@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { LOGO_URL } from "../utils/constant";
 
 // normal component
@@ -11,7 +12,10 @@ const Title = ()=> (
   </a>
 )
 
-const Header = () =>(
+const Header = () =>{
+
+  const [loginButton, setLoginButton] = useState("Login");
+  return (
   <div className="header" >
     <Title/>
     <div className="nav-items">
@@ -20,9 +24,15 @@ const Header = () =>(
         <li>About</li>
         <li>Contact</li>
         <li>Cart</li>
+        <button onClick={() =>
+          {
+            loginButton == "Login" ? setLoginButton("Logout") : setLoginButton("Login")
+          }
+        }>{loginButton}</button>
       </ul>
     </div>
   </div>
 );
+};
 
 export default Header;
