@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { mockData } from "../utils/mockData";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -14,11 +15,15 @@ const Body = () => {
 
   const fetchData = async () => {
     const res = await fetch(
-      "https://fakerestaurantapi.runasp.net/api/Restaurant",
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.93&lng=77.62&page_type=DESKTOP_WEB_LISTING",
     );
-    const data = await res.json();
-    setRestaurantList(data);
-    setFilteredRestaurantList(data)
+    const json = await res.json();
+    const restaurants =
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
+
+    setRestaurantList(restaurants);
+    setFilteredRestaurantList(restaurants);
   };
 
   if (restaurantList.length === 0) {
@@ -40,12 +45,12 @@ const Body = () => {
           />
           <button
             onClick={() => {
-              const filterRest = restaurantList.filter( (restaurant) => {
-                return restaurant.restaurantName.toLowerCase().includes(searchText.toLowerCase())
-              })
-              setFilteredRestaurantList(filterRest)
-
-              console.log(restaurantList, "=======restaurantList");
+              const filterRest = restaurantList.filter((restaurant) => {
+                return restaurant.info.name
+                  .toLowerCase()
+                  .includes(searchText.toLowerCase());
+              });
+              setFilteredRestaurantList(filterRest);
             }}
           >
             Search
@@ -53,12 +58,13 @@ const Body = () => {
         </div>
         <button
           className="filter-btn"
-          // onClick={() => {
-          //   setRestaurantList(restaurantList.filter((restaurant) => {
-          //     return restaurant.rating > 4.0
-          //   })
-          // )
-          //   }}
+          onClick={() => {
+            setRestaurantList(
+              restaurantList.filter((restaurant) => {
+                return restaurant.info.avgRating > 5;
+              }),
+            );
+          }}
           onMouseOver={() => {
             console.log("dont over just clicked");
           }}
@@ -69,7 +75,12 @@ const Body = () => {
       <div className="restaurant-list">
         {filteredRestaurantList.map((restaurant) => {
           return (
-            <RestaurantCard {...restaurant} key={restaurant.restaurantID} />
+            <Link
+              key={restaurant.info.id}
+              to={"/restaurants/" + restaurant.info.id}
+            >
+              <RestaurantCard {...restaurant.info} />
+            </Link>
           );
         })}
       </div>
