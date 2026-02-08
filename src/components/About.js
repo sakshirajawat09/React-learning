@@ -3,18 +3,17 @@ import User from "./User";
 import UserClass from "./UserClass";
 
 class About extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log("maa");
-  }
+  // constructor(props) {
+  //   super(props);
+  //   console.log("maa");
+  // }
 
-  async componentDidMount() {
+  componentDidMount() {
     console.log("parent DidMount");
   }
   render() {
     return (
       <div>
-        {console.log("maa render")}
         <h1>About</h1>
         <p>welcome to the About page</p>
         <User
@@ -27,11 +26,7 @@ class About extends React.Component {
           location={"indore"}
           social={"sakshirajawat09"}
         />
-        <UserClass
-          name={"Eshan"}
-          location={"indore"}
-          social={"eshan29"}
-        />
+        <UserClass name={"Eshan"} location={"indore"} social={"eshan29"} />
       </div>
     );
   }

@@ -3,11 +3,13 @@ import RestaurantCard from "./RestaurantCard";
 import { mockData } from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOlineStatus from "../utils/useOlineStatus";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
   const [filteredRestaurantList, setFilteredRestaurantList] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const onlineStatus = useOlineStatus();
 
   useEffect(() => {
     const timmer = setInterval(() => {
@@ -37,6 +39,9 @@ const Body = () => {
 
   if (restaurantList.length === 0) {
     return <Shimmer />;
+  }
+  if (!onlineStatus) {
+    return <h1> You are offline, please check the internet</h1>;
   }
 
   return (
