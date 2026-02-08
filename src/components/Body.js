@@ -10,7 +10,16 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
+    const timmer = setInterval(() => {
+      console.log("Mounting by useeffect");
+    }, 1000);
+
     fetchData();
+    return () => {
+      clearInterval(timmer);
+
+      console.log("unMounting by useeffect return");
+    };
   }, []);
 
   const fetchData = async () => {
