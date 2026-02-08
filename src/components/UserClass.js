@@ -5,7 +5,7 @@ class UserClass extends React.Component {
     super(props);
 
     this.state = {
-      userInfo : {},
+      userInfo: {},
     };
 
     {
@@ -14,28 +14,25 @@ class UserClass extends React.Component {
   }
 
   async componentDidMount() {
-    const username = this.props.social
+    const username = this.props.social;
     console.log(this.props.name + "child DidMount");
-    const res = await fetch("https://api.github.com/users/"+{username}); // return promise
+    const res = await fetch("https://api.github.com/users/" + username); // return promise
     const data = await res.json(); // full filmet the promise
-    // console.log("data", res.json());
     console.log("===========", data, "await res.json()");
-    this.setState(
-      {
-        userInfo :data,
-      }
-    )
+    this.setState({
+      userInfo: data,
+    });
   }
 
-  componentDidUpdate(){
-    this.timmer = setInterval(()=>{
+  componentDidUpdate() {
+    this.timmer = setInterval(() => {
       console.log("componentDidUpdate");
-    }, 1000)
-   }
+    }, 1000);
+  }
 
-  componentWillUnmount(){
-    clearInterval(this.timmer)
-    console.log("componentWillUnmount"+this.props.name);
+  componentWillUnmount() {
+    clearInterval(this.timmer);
+    console.log("componentWillUnmount" + this.props.name);
   }
 
   render() {
