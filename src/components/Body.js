@@ -46,11 +46,11 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="filter flex">
+        <div className="search m-4 p-4">
           <input
             type="text"
-            className="search-box"
+            className="search-box border border-solid border-black"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
@@ -58,6 +58,7 @@ const Body = () => {
             }}
           />
           <button
+            className="px-4 py-2 m-4 bg-green-100 rounded-lg"
             onClick={() => {
               const filterRest = restaurantList.filter((restaurant) => {
                 return restaurant.info.name
@@ -70,23 +71,25 @@ const Body = () => {
             Search
           </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            setRestaurantList(
-              restaurantList.filter((restaurant) => {
-                return restaurant.info.avgRating > 5;
-              }),
-            );
-          }}
-          onMouseOver={() => {
-            console.log("dont over just clicked");
-          }}
-        >
-          Top Rated Restaurant
-        </button>
+        <div className="m-4 p-4 flex items-center">
+          <button
+            className="filter-btn px-4 py-2 bg-gray-50 flex rounded-lg"
+            onClick={() => {
+              setRestaurantList(
+                restaurantList.filter((restaurant) => {
+                  return restaurant.info.avgRating > 5;
+                }),
+              );
+            }}
+            onMouseOver={() => {
+              console.log("dont over just clicked");
+            }}
+          >
+            Top Rated Restaurant
+          </button>
+        </div>
       </div>
-      <div className="restaurant-list">
+      <div className="restaurant-list flex flex-wrap">
         {filteredRestaurantList.map((restaurant) => {
           return (
             <Link

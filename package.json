@@ -21,11 +21,13 @@
   },
   "homepage": "https://github.com/sakshirajawat09/React-learning#readme",
   "dependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-router": "^6.22.3",
     "react-router-dom": "^6.22.3",
-    "reactdom": "^2.0.0"
+    "reactdom": "^2.0.0",
+    "tailwindcss": "^4.1.18"
   },
   "browserslist": [
     "last 2 versions"
